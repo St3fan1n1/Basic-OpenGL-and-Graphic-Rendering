@@ -5,7 +5,7 @@ In this project I will be following ***Learning Modern 3D Graphics Programming b
 # Graphics and Rendering
 Every that is rendered in a screen comes from a 2D array of ***pixels***. The word pixel comes from the term **Pic**ture **El**ement.
 
-![Pixelated Image Example](ImgExample.png)
+![Pixelated Image Example](imgs/ImgExample.png)
 
 Every square present in this image can be seen as a pixel with its own set of coordinates.
 
@@ -15,3 +15,17 @@ Rasterization works by treating the object as a mesh of polygons. A ***mesh*** i
 
 ## **Trieangles and vertices**
 A triangle consist of 3 vertices. A ***vertex*** is a collection of information or data. Each vertex can contain a lot of information (position, color, etc), but it must at least contain the position of the vertex. This data consist of 3 three-dimentional points. It is commonly represented by (X, Y, Z). 
+
+# **Rasterization Overview**
+This overview is a very simplified version of the rasterization pipeline.
+
+## **Clip Space Transformation**
+This first step of rasterization is transforming the vertices of a triangle to a certain region of space. Everything in this volume or space will be rendered to the output image and everything not in the volume wont be rendered to the image.
+
+Compared to positions in 3D space, that have 3 coordinates, a clip space has ***4 coordinates***. In this system, the direction of X is to the right, Y is up, Z is away from the viewer and W defines what extent of clip space are for the vertex.
+
+## **Normalized Coordinates**
+To transform from Clip Space Coordinates to Normalized Coordinates you need to take the X, Y and Z of each vertex position and divide them by the W. This makes the range of X, Y and Z between [-1, 1].
+
+
+
