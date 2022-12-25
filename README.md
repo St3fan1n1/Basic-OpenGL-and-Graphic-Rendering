@@ -27,5 +27,11 @@ Compared to positions in 3D space, that have 3 coordinates, a clip space has ***
 ## **Normalized Coordinates**
 To transform from Clip Space Coordinates to Normalized Coordinates you need to take the X, Y and Z of each vertex position and divide them by the W. This makes the range of X, Y and Z between [-1, 1].
 
+### **Noemalized Coordinate Space**
 
+![Pixelated Image Example](imgs/NormalizedCoordinates.png)
 
+The cube indicated de boundaries of the normalized device coordinates sapce.
+
+## **Window Transformation**
+In this step we transform the Normalized Coordinates to Window coordinates, which are relative to the window. Even if we refer to them as window coordinates, they are still 3 dimentional coordinates.
