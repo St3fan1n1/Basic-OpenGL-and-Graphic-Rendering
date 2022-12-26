@@ -1,6 +1,6 @@
 # **Basic OpenGL and Graphic Rendering**
 
-In this project I will be following ***Learning Modern 3D Graphics Programming by*** *Jason L. McKesson*. 
+In this project I will be following ***Learning Modern 3D Graphics Programming by*** *Jason L. McKesson*. Everything writen in this repository will be for personal study.
 
 # Graphics and Rendering
 Every that is rendered in a screen comes from a 2D array of ***pixels***. The word pixel comes from the term **Pic**ture **El**ement.
@@ -42,3 +42,19 @@ In this step we transform the Normalized Coordinates to Window coordinates, whic
 This process takes the triangle and breaks it up based on the pixels of the window.
 
 ![Pixelated Image Example](imgs/ScanConversion.png)
+
+In the grid, each circle represents the center of the pixel. This represents a ***sample***. In this step, the triangle will produce a ***fragment*** for every pixel sample within the area of the triangle. For triangles that perfectly share an edge, OpenGL guarantees no gaps between them.
+
+### **Shared Edge Scan Conversion**
+![Pixelated Image Example](imgs/SharedEdgeScanConversion.jpeg)
+
+## **Fragment Processing**
+In this step, the rasterizer takes the fragment and transforms it into one or more color values. All the fragments from a triangle need to be processed before starting with the fragments rfom another triangle. This is because, the fragments from one triangle can overlap the fragments from another.
+
+## **Colors**
+Colors in computer graphics are a series of numbers on the range [0, 1]. This range corresponds to an intensity of the particular color. 
+
+The set of reference colors is called a ***colorspace***. There are many color spaces, but the most common, and the one that I will be using is RGB (Red, Green, Blue).
+
+## **Shaders**
+A ***shader*** is a program designed to be run on a renderer as part of the rendering operation. Shader can only be excecuted at certain points of the rendering process. These shader stages are hooks where the user can add arbitrary algorithms to create custom and specific visual effects depending on the circunstances.
