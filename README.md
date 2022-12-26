@@ -34,4 +34,11 @@ To transform from Clip Space Coordinates to Normalized Coordinates you need to t
 The cube indicated de boundaries of the normalized device coordinates sapce.
 
 ## **Window Transformation**
-In this step we transform the Normalized Coordinates to Window coordinates, which are relative to the window. Even if we refer to them as window coordinates, they are still 3 dimentional coordinates.
+In this step we transform the Normalized Coordinates to Window coordinates, which are relative to the window. Even if we refer to them as window coordinates, they are still 3 dimentional coordinates. The only difference is that the bounds for these coordinates depends on the viewable window.
+
+> Its good to note that window coordinates have the bottom-left corner of the screen as the (0, 0).
+
+## **Scan Conversion**
+This process takes the triangle and breaks it up based on the pixels of the window.
+
+![Pixelated Image Example](imgs/ScanConversion.png)
