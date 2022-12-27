@@ -1,4 +1,4 @@
-# **Basic OpenGL and Graphic Rendering**
+# **Basic Introduction to OpenGL and Graphic Rendering**
 
 In this project I will be following ***Learning Modern 3D Graphics Programming by*** *Jason L. McKesson*. Everything writen in this repository will be for personal study.
 
@@ -58,3 +58,40 @@ The set of reference colors is called a ***colorspace***. There are many color s
 
 ## **Shaders**
 A ***shader*** is a program designed to be run on a renderer as part of the rendering operation. Shader can only be excecuted at certain points of the rendering process. These shader stages are hooks where the user can add arbitrary algorithms to create custom and specific visual effects depending on the circunstances.
+
+## **Introduction to OpenGL**
+***OpenGL API*** is defined as a state machine where almost all functions set or retrive some state from the API. Functions that do not change the state are functions that use the currently set state to cause rendering to happen.
+
+In C++, if we want to create an object containing an int, float and a string, we would create it and access it like this:
+
+```
+struct Object
+{
+    int num;
+    float fnum;
+    char *string;
+};
+
+Object object;
+
+object.num = 1;
+object.fnum = 1.0f;
+object.string = "Hello";
+```
+
+In OpenGL, we would code it like this:
+```
+GLuint object;
+glGenObject(1, &object);
+
+glBindObject(GL_MODIFY, object);
+glObjectParameteri(GL_MODIFY, GL_OBJECT_COUNT, 1);
+glObjectParameteri(GL_MODIFY, GL_OBJECT_OPACITY, 1.0f);
+glObjectParameteri(GL_MODIFY, GL_OBJECT_NAME, "Hello");
+```
+
+> Its good to note that none of these are actual OpenGL commands, they are just examples.
+
+Since OpenGL owns all the storage for all objects, the user can only access an object by reference. Almos all objects are referred to by an unsigned int (GLuint).
+
+To actually modify an object, we need to bind it to the OpenGL context. Objects can be bound to different locations of the context. With this, the same object can be used in different ways. These locations are called ***targets***. Objects can have a list of different targets or just one. In the fictional OpenGL code above, ***GL_MODIFY*** is the location or target where the object is bound.
