@@ -94,4 +94,4 @@ glObjectParameteri(GL_MODIFY, GL_OBJECT_NAME, "Hello");
 
 Since OpenGL owns all the storage for all objects, the user can only access an object by reference. Almos all objects are referred to by an unsigned int (GLuint).
 
-To actually modify an object, we need to bind it to the OpenGL context. Objects can be bound to different locations of the context. With this, the same object can be used in different ways. These locations are called ***targets***. Objects can have a list of different targets or just one. In the fictional OpenGL code above, ***GL_MODIFY*** is the location or target where the object is bound.
+To actually modify an object, we need to bind it to the OpenGL context. Objects can be bound to different locations of the context. With this, the same object can be used in different ways. These locations are called ***targets***. Objects can have a list of different targets or just one. In the fictional OpenGL code above, ***GL_MODIFY*** is the location or target where the object is bound. Binding the object to 0 is the same as unbinding the object.
