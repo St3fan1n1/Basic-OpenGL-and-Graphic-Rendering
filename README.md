@@ -1,6 +1,6 @@
 # **Basic Introduction to OpenGL and Graphic Rendering**
 
-In this project I will be following ***Learning Modern 3D Graphics Programming by*** *Jason L. McKesson*. Everything writen in this repository will be for personal study.
+In this project I will be Learning ***Modern 3D Graphics Programming by***. Everything writen in this repository will be for personal study.
 
 # Graphics and Rendering
 Every that is rendered in a screen comes from a 2D array of ***pixels***. The word pixel comes from the term **Pic**ture **El**ement.
