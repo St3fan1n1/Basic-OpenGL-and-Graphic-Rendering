@@ -4,7 +4,7 @@ project(Game)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-add_executable(${PROJECT_NAME} main.cpp MainGame.cpp)
+add_executable(${PROJECT_NAME} main.cpp MainGame.cpp Sprite.cpp)
 
 # glfw
 find_package(glfw3 REQUIRED)

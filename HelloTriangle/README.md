@@ -42,3 +42,7 @@ The ***glDrawArray*** uses the current state to generate a stream of vertices th
 Next two lines are cleanup for the code that was writen before.
 
 The last line, ***glfwSwapBuffer*** swaps the current buffer. The OpenGL framebuffer is a double-buffered. This means that the buffer that we are currently drawing to is not the buffer that is being shown to the user, so we need to change to that one after we finish drawing.
+
+# **VBO**
+
+The vertex buffer object (***VBO***) is a buffer that holds all the vertices for our triangles, then we do a buffer upload. This takes the VBO and sends it to the GPU. With this, we only need to put all vertices on the buffer on the CPU and then copy them to the GPU, this way we dont sent vertices from the CPU to the GPU every frame.
