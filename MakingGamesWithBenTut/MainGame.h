@@ -15,10 +15,9 @@ public:
 
 private:
     void init();
-
     void gameLoop();
-
-    void fatalError(std::string errorString);
+    void draw();
+    void fatalError(std::string errorMsg);
 
     GLFWwindow* window;
     int screenWidth;

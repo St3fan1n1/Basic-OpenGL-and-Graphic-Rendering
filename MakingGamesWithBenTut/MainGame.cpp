@@ -6,14 +6,7 @@ MainGame::MainGame() : window(nullptr), screenWidth(1024), screenHeight(768), sh
 }
 MainGame::~MainGame()
 {
-    std::cout << "Exit Correctly :)\n";
     glfwTerminate();
-}
-
-void MainGame::fatalError(std::string errorString)
-{
-    std::cout << errorString << std::endl;
-    shouldQuit = true;
 }
 
 void MainGame::run()
@@ -22,11 +15,21 @@ void MainGame::run()
     gameLoop();
 }
 
+void MainGame::fatalError(std::string errorMsg)
+{
+    std::cout << errorMsg << std::endl;
+    std::cout << "Enter any key to quit...\n";
+    int tmp;
+    std::cin >> tmp;
+    exit(EXIT_FAILURE);
+}
+
 void MainGame::init()
 {
     glfwInit();
 
     // Window Creation
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -37,18 +40,22 @@ void MainGame::init()
 
     if (window == nullptr)
     {
+        glfwTerminate();
         fatalError("Failed to create the GLFW Window.");
     }
 
     glfwMakeContextCurrent(window);
 
     // Initiate GLEW
+
     glewExperimental = GL_TRUE;
 
     if (glewInit() != GLEW_OK)
     {
         fatalError("Failed to initialize GLEW.");
     }
+
+    // Vertex and Fragment Shader Creation
 
     GLint success;
     GLchar infoLog[512];
@@ -99,6 +106,8 @@ void MainGame::init()
         0.0f, 0.5f, 0.0f
     };
 
+    // VAO and VBO Creation
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
 
@@ -112,6 +121,8 @@ void MainGame::init()
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 }
 
 void MainGame::gameLoop()
@@ -119,15 +130,18 @@ void MainGame::gameLoop()
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        glBindVertexArray(0);
-
-        glfwSwapBuffers(window);
+        draw();
     }
+}
+
+void MainGame::draw()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glUseProgram(shaderProgram);
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBindVertexArray(0);
+
+    glfwSwapBuffers(window);
 }

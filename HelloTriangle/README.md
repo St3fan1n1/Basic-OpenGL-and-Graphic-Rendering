@@ -2,6 +2,17 @@
 
 In this sevtion I will be learning the basics of window creation using GLFW and GLEW. I will also be learning the basics of displaying stuff to the screen.
 
+***glfwInit()*** initiates glfw. The same goes for ***glewInit()***.
+
+# **Creating a Window**
+
+To create a window, you need to initiate glfw and glew. After that, we tell the computer how we want to create the window by using ***glfwWindowHint()***. Then we create a pointer to a window using the function ***glfwCreateWindow()***. In this function we need to pass it the width, height and title of the window. The last two parameters will be learned in the future.
+We also create the current context to the window. A context holds all the states associated to OpenGL.
+
+We also need to check for fatal errors when initiating glfw and glew, so we create a function to check and end the program if needed.
+
+# **Drawing to the Screen**
+
 ```
 glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 glClear(GL_COLOR_BUFFER_BIT);
